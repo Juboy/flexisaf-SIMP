@@ -1,7 +1,7 @@
 ## flexisaf-SIMP
 Student Information Management portal
 
-Use `mwnw spring-boot:run` to start the application
+Use `mvnw spring-boot:run` to start the application
 
 If you have problems starting the application, you might need to change the port in which the application runs on. The application.properties file is located on *src/main/resources* folder.
 You can change project configuration like server port and mail client configurations and database properties.
