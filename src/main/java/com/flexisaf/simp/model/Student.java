@@ -4,11 +4,15 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -44,8 +48,10 @@ public class Student extends Audited {
 	@Column(nullable = true)
 	private String otherNames;
 	
-	@Column(nullable = false)
-	private String gender;
+	@Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column(length = 6)
+	private Gender gender;
 	
 	@Column(nullable = false)
 	private LocalDate dob;

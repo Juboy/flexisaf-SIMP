@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
@@ -46,6 +45,8 @@ public class StudentController {
 	@PostMapping
 	public ResponseEntity<Response> saveStudent(@Valid @RequestBody StudentRequest request) throws SimpException{
 		
+		if(!request.getGender().matches("M|F")) throw new SimpException("Gender must be M or F");
+		
 		Student student = studentService.saveStudent(request.getEmail(),request.getFirstName(), request.getLastName(), request.getOtherNames(), request.getGender(), request.getDob(), request.getDepartmentId());
 		
 		Response response = Response.builder()
@@ -59,6 +60,8 @@ public class StudentController {
 	
 	@PutMapping("/{studentId}")
 	public ResponseEntity<Response> updateStudent(@PathVariable Long studentId, @Valid @RequestBody StudentRequest request) throws SimpException{
+		
+		if(!request.getGender().matches("M|F")) throw new SimpException("Gender must be M or F");
 		
 		Student student = studentService.updateStudent(studentId, request.getFirstName(), request.getLastName(), request.getOtherNames(), request.getGender(), request.getDob(), request.getDepartmentId());
 		

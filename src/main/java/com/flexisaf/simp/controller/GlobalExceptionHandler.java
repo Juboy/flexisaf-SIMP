@@ -1,5 +1,6 @@
 package com.flexisaf.simp.controller;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Iterator;
 
 import javax.validation.ConstraintViolation;
@@ -39,7 +40,25 @@ public class GlobalExceptionHandler {
 		
 		while (iterator.hasNext()) {
 			ConstraintViolation<?> constraint = iterator.next();
-			errorMessage.append(constraint.getInvalidValue().toString() + " " + constraint.getMessage());
+			errorMessage.append(constraint.getInvalidValue().toString() + " " + constraint.getMessage()+ System.lineSeparator());
+		}
+		Response response = Response.builder()
+				.status(Response.FAILURE)
+				.message(errorMessage.toString())
+				.build();
+		
+		return response;
+	}
+	
+	@ExceptionHandler
+	public Response handleSQLValidationError(SQLIntegrityConstraintViolationException exception) {
+		
+		StringBuilder errorMessage = new StringBuilder();
+		Iterator<Throwable> iterator = exception.iterator();
+	
+		while (iterator.hasNext()) {
+			Throwable e = iterator.next();
+			errorMessage.append(e.getMessage()+ System.lineSeparator());
 		}
 		Response response = Response.builder()
 				.status(Response.FAILURE)

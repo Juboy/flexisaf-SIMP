@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
 import com.flexisaf.simp.model.Department;
+import com.flexisaf.simp.model.Gender;
 import com.flexisaf.simp.model.Student;
 
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,7 @@ public class StudentRepositoryTest {
 				.firstName("Alexa")
 				.lastName("Bliss")
 				.otherNames(null)
-				.gender("M")
+				.gender(Gender.M)
 				.department(department)
 				.build();
 		
@@ -51,7 +52,7 @@ public class StudentRepositoryTest {
 				.firstName("John")
 				.lastName("Doe")
 				.otherNames(null)
-				.gender("F")
+				.gender(Gender.F)
 				.department(department)
 				.build();
 		
@@ -76,7 +77,7 @@ public class StudentRepositoryTest {
 				.firstName("Alexa")
 				.lastName("Bliss")
 				.otherNames(null)
-				.gender("M")
+				.gender(Gender.M)
 				.department(department)
 				.build();
 		
@@ -87,7 +88,7 @@ public class StudentRepositoryTest {
 				.firstName("John")
 				.lastName("Doe")
 				.otherNames(null)
-				.gender("F")
+				.gender(Gender.F)
 				.department(department)
 				.build();
 		

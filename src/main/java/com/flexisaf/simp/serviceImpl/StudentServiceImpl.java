@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.flexisaf.simp.SimpException;
 import com.flexisaf.simp.model.Department;
+import com.flexisaf.simp.model.Gender;
 import com.flexisaf.simp.model.LastMatric;
 import com.flexisaf.simp.model.Student;
 import com.flexisaf.simp.repository.DepartmentRepository;
@@ -46,7 +47,7 @@ public class StudentServiceImpl implements StudentService{
 				.firstName(firstName)
 				.lastName(lastName)
 				.otherNames(otherNames)
-				.gender(gender)
+				.gender(Gender.valueOf(gender))
 				.dob(dob)
 				.department(department.get())
 				.build();
@@ -72,7 +73,7 @@ public class StudentServiceImpl implements StudentService{
 		student.get().setFirstName(firstName);
 		student.get().setLastName(lastName);
 		student.get().setOtherNames(otherNames);
-		student.get().setGender(gender);
+		student.get().setGender(Gender.valueOf(gender));
 		student.get().setDob(dob);
 		student.get().setDepartment(department.get());
 		return studentRepository.save(student.get());

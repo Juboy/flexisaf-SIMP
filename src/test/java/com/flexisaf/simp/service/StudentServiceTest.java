@@ -20,6 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.flexisaf.simp.SimpException;
 import com.flexisaf.simp.model.Department;
+import com.flexisaf.simp.model.Gender;
 import com.flexisaf.simp.model.Student;
 import com.flexisaf.simp.repository.DepartmentRepository;
 import com.flexisaf.simp.repository.LastMatricRepository;
@@ -53,7 +54,7 @@ public class StudentServiceTest {
 				.firstName("John")
 				.lastName("Doe")
 				.otherNames(null)
-				.gender("M")
+				.gender(Gender.M)
 				.department(department)
 				.build();
 		
