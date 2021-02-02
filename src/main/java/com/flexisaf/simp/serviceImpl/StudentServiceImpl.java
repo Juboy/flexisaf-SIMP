@@ -167,6 +167,17 @@ public class StudentServiceImpl implements StudentService{
 		
 		return true;
 	}
+
+	@Override
+	public void deleteStudent(Long studentId) throws SimpException {
+		Optional<Student> student = studentRepository.findById(studentId);
+		
+		if(!student.isPresent()) throw new SimpException("Cannot find student");
+		
+		studentRepository.delete(student.get());
+		
+		
+	}
 	
 
 }

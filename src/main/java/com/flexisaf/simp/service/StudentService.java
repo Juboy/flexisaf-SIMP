@@ -86,4 +86,12 @@ public interface StudentService {
 	public List<Student> searchStudentsWithRange(String query, LocalDate from, LocalDate to, int page);
 	
 	public void sendBirthdayMails();
+	
+	/**
+	 * Delete a student's record with its ID
+	 * 
+	 * @param studentId
+	 * @throws SimpException 
+	 */
+	public void deleteStudent(Long studentId) throws SimpException;
 }

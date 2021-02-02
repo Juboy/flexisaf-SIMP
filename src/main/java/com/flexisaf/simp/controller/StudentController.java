@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -141,6 +142,18 @@ public class StudentController {
 				.status(Response.SUCCESS)
 				.message("Student fetched successfully")
 				.data(students)
+				.build();
+		
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
+	@DeleteMapping("/{studentId}")
+	public ResponseEntity<Response> deleteStudent(@PathVariable Long studentId) throws SimpException{
+		studentService.deleteStudent(studentId);
+		
+		Response response = Response.builder()
+				.status(Response.SUCCESS)
+				.message("Student record successfully deleted")
 				.build();
 		
 		return ResponseEntity.status(HttpStatus.OK).body(response);
